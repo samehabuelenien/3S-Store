@@ -590,5 +590,64 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/966XXXXXXXXX?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%8C%20%D8%A7%D8%AD%D8%A8%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A7%D8%AA%20%D9%83%D8%B1%D8%A7%D9%86%D8%B4%20TV"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener"
+   aria-label="تواصل معنا عبر واتساب">
+
+  <!-- أيقونة واتساب SVG -->
+  <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" aria-hidden="true">
+    <path d="M19.11 17.23c-.28-.14-1.65-.81-1.9-.9-.26-.09-.45-.14-.64.14-.19.28-.73.9-.9 1.09-.16.19-.33.21-.61.07-.28-.14-1.19-.44-2.26-1.39-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.36-.02-.5-.07-.14-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.28-1 1-1 2.44 0 1.44 1.02 2.83 1.16 3.03.14.19 2.01 3.07 4.87 4.3.68.29 1.21.46 1.62.59.68.22 1.3.19 1.79.12.55-.08 1.65-.67 1.88-1.31.23-.64.23-1.19.16-1.31-.07-.12-.26-.19-.54-.33z"/>
+    <path d="M26.67 5.33C24.53 3.19 21.38 2 18.05 2 11.38 2 6 7.38 6 14.05c0 2.26.59 4.45 1.72 6.39L6 30l9.8-1.67c1.87 1.02 3.98 1.56 6.25 1.56 6.67 0 12.05-5.38 12.05-12.05 0-3.33-1.19-6.48-3.43-8.51zM18.05 27.36c-2.04 0-4.03-.55-5.77-1.59l-.41-.24-5.81.99.98-5.66-.27-.43c-1.07-1.71-1.64-3.68-1.64-5.7 0-5.93 4.82-10.75 10.75-10.75 2.87 0 5.56 1.12 7.59 3.15 2.03 2.03 3.15 4.72 3.15 7.59 0 5.93-4.82 10.75-10.75 10.75z"/>
+  </svg>
+</a>
+
+<style>
+.whatsapp-float{
+  position:fixed;
+  right:16px;
+  bottom:calc(16px + env(safe-area-inset-bottom));
+  width:56px;
+  height:56px;
+  background:#25D366;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  z-index:9999;
+  transition:.25s ease;
+}
+.whatsapp-float:hover{
+  transform:scale(1.05);
+}
+@media (max-width:430px){
+  .whatsapp-float{
+    width:60px;
+    height:60px;
+  }
+}
+</style>
+
+<script>
+/* تمرير gclid / utm إلى واتساب (اختياري) */
+(function(){
+  try{
+    var params = new URLSearchParams(window.location.search);
+    if(!params.toString()) return;
+    var a = document.querySelector('.whatsapp-float');
+    if(!a) return;
+    var base = a.href.split('?')[0];
+    var msg = decodeURIComponent(a.href.split('text=')[1] || '');
+    params.forEach(function(v,k){
+      msg += "\\n" + k + ": " + v;
+    });
+    a.href = base + "?text=" + encodeURIComponent(msg);
+  }catch(e){}
+})();
+</script>
   </body>
 </html>
