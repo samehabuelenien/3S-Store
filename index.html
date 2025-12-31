@@ -654,23 +654,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 }
 </style>
-
-<script>
-/* تمرير gclid / utm إلى واتساب (اختياري) */
-(function(){
-  try{
-    var params = new URLSearchParams(window.location.search);
-    if(!params.toString()) return;
-    var a = document.querySelector('.whatsapp-float');
-    if(!a) return;
-    var base = a.href.split('?')[0];
-    var msg = decodeURIComponent(a.href.split('text=')[1] || '');
-    params.forEach(function(v,k){
-      msg += "\\n" + k + ": " + v;
-    });
-    a.href = base + "?text=" + encodeURIComponent(msg);
-  }catch(e){}
-})();
-</script>
   </body>
 </html>
